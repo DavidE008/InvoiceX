@@ -1,0 +1,40 @@
+{
+  "name": "invoicex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsx --test tests/*.test.ts",
+    "test:contracts": "tsx --test tests/contracts.test.ts",
+    "compile": "tsx scripts/compile.ts",
+    "deploy": "tsx --env-file-if-exists=.env scripts/deploy.ts",
+    "ats": "tsx --env-file-if-exists=.env scripts/ats.ts",
+    "check:chains": "tsx --env-file-if-exists=.env scripts/check-chains.ts",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "lucide-react": "^0.468.0",
+    "viem": "2.56.3",
+    "@openzeppelin/contracts": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "@playwright/test": "^1.55.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "tsx": "^4.20.0",
+    "solc": "0.8.30",
+    "ganache": "^7.9.2",
+    "ethers": "^6.15.0"
+  },
+  "optionalDependencies": { "@hashgraph/asset-tokenization-sdk": "8.0.0" }
+}
