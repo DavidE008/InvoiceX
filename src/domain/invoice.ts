@@ -35,6 +35,6 @@ export function transition(item: Invoice, action: 'finance' | 'repay' | 'claim' 
   if (action === 'finance' && Date.parse(item.dueDate) <= Date.now()) throw new Error('This invoice has matured and cannot be financed.');
   return { ...item, status: rules[action][1], activity: [...item.activity, { label: `Demo: ${rules[action][1]}`, at: new Date().toISOString() }] };
 }
-export const money = (value: string | number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(Number(value));
+export const money = (value: string | number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(Number(value));
 export const daysUntil = (date: string) => Math.ceil((Date.parse(date) - Date.now()) / 86_400_000);
 export const shortAddress = (address: string) => `${address.slice(0, 6)}…${address.slice(-4)}`;
