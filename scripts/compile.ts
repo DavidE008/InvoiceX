@@ -10,7 +10,7 @@ export function compile() {
     settings: { optimizer: { enabled: true, runs: 200 }, evmVersion: 'paris', outputSelection: { '*': { '*': ['abi', 'evm.bytecode.object', 'metadata'] } } },
   };
   const output = JSON.parse(solc.compile(JSON.stringify(input), { import: (path: string) => {
-    try { return { contents: readFileSync(resolve('node_modules', path), 'utf8') }; }
+    try { const contents = readFileSync(resolve('node_modules', path), 'utf8'); input.sources[path] = { content: contents }; return { contents }; }
     catch { return { error: `Missing import: ${path}` }; }
   } }));
   const errors = output.errors?.filter((e: { severity: string }) => e.severity === 'error');

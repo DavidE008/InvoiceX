@@ -1,0 +1,11 @@
+{
+  "chainId": 296,
+  "accountId": "0.0.10505222",
+  "factoryId": "0.0.9213391",
+  "resolverId": "0.0.9212226",
+  "assetId": "0.0.10506298",
+  "transactionHash": "0x49005a92d7ec881da6d3461e54594cd6d9c76ff52195a89db3202f6383ba3cf1",
+  "result": "SUCCESS",
+  "consensusTimestamp": "1789234091.446291104",
+  "note": "Recovered from Hedera mirror node after ATS create succeeded but SDK readback used an incorrect local default RPC. No duplicate creation was sent."
+}

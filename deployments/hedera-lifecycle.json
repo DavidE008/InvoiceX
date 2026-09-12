@@ -1,0 +1,95 @@
+{
+  "network": "hedera-testnet",
+  "asset": "0x48b2db5a2eaf3d99ab65d265f410854668ace50b",
+  "marketplace": "0x975B3eE7B0085d1FC3Ef286D5e95B25101D0f364",
+  "seller": "0x474A6B1fA5dCFB636ad0fdf7373f323c9d41Bd6E",
+  "investor": "0x6Cfd3f5d20De58fA243BEc74d1bf8Fb589453371",
+  "ensPublished": false,
+  "scope": "Hedera-only synthetic receivable lifecycle, not an ENS integration proof",
+  "transactions": [
+    {
+      "label": "Fund test investor with 5 test HBAR",
+      "hash": "0xff2a72cb1dc0ec48c9a178974730751c483bdc3234f133deefa6dc1959fc530d",
+      "status": "success"
+    },
+    {
+      "label": "Approve actual ATS provenance",
+      "hash": "0xa1da60483f7f62fa8b4a3c0a7cb871f634683f8eb88a1010c274545b9afb07c1",
+      "status": "success"
+    },
+    {
+      "label": "Approve one ATS unit",
+      "hash": "0x9b3af4cc02803539f0a87f3ddb66c7cbfd3d5a12e3fff24de716d23f1820a9aa",
+      "status": "success"
+    },
+    {
+      "label": "List Hedera-only fixture",
+      "hash": "0x5f545c315236f66224d4bddae0624bd4eed921ff0baefe129c5aa5b970349cf0",
+      "status": "success"
+    },
+    {
+      "label": "Mint test USD to investor",
+      "hash": "0x16c4bb049ce15c05a53743857d5c8a35fb00df8bdabcc3c31be255658e7a7fce",
+      "status": "success"
+    },
+    {
+      "label": "Investor payment approval",
+      "hash": "0x76735e351531cafbac80d3cb76293ad497ef757c2193e4386b63c8f3369a0bc9",
+      "status": "success"
+    },
+    {
+      "label": "Revoke test investor KYC",
+      "hash": "0xeafdfa5a7c46dad58670684be972be942d561b862484d118eab3a6891e58829f",
+      "status": "reverted"
+    },
+    {
+      "label": "Investor payment approval",
+      "hash": "0x05464e40cafda1fa9e0d0a756574b2c064aeea432808ed838674884d02f6b479",
+      "status": "success"
+    },
+    {
+      "label": "Revoke test investor KYC",
+      "hash": "0x42d0e3991de513a04262d7798a056a6ebe57171e9ad702575d7145036049bf26",
+      "status": "success"
+    },
+    {
+      "label": "Restore synthetic test investor KYC",
+      "hash": "0x7589add9edddafafb17290d98054e1404ff0a77d5199f8cd0d4657f530cf7c8b",
+      "status": "success"
+    },
+    {
+      "label": "Finance with atomic ATS delivery",
+      "hash": "0xd2d9a2e8594f60ed931b25a1a7783219642f02464ef53ed654edafbd2d8d106e",
+      "status": "success"
+    },
+    {
+      "label": "Mint debtor test USD",
+      "hash": "0x2c3a6c941c0fd025fb9047a7149b2e3071f528b775d3a9354a9d96adc8704367",
+      "status": "success"
+    },
+    {
+      "label": "Approve face-value repayment",
+      "hash": "0xfe2dffec71283ebff122d639e107b90867627827c2297cc967bc25968c18cd04",
+      "status": "success"
+    },
+    {
+      "label": "Repay invoice",
+      "hash": "0x9b6dddb2a0b7585d7a57d3a0b5830672a5e8827ef07806aa377f97ed186f548f",
+      "status": "success"
+    },
+    {
+      "label": "Approve ATS redemption",
+      "hash": "0x651281f3849422db1592e923abbe6d5be6a9a327f30e18f1b362f79981174ed1",
+      "status": "success"
+    },
+    {
+      "label": "Claim repayment as ATS holder",
+      "hash": "0xe77ac862587e6c3bfcfe6273a8cccb4d94ffe95a5d1b7a115c32cbce090edfe3",
+      "status": "success"
+    }
+  ],
+  "invoiceId": "1",
+  "nonKycFinanceSimulationRejected": true,
+  "finalStatus": "Settled",
+  "investorPaymentBalance": "10000000000"
+}

@@ -1,0 +1,40 @@
+{
+  "network": "hedera-testnet",
+  "assetId": "0.0.10506298",
+  "assetAddress": "0x48b2db5a2eaf3d99ab65d265f410854668ace50b",
+  "issuer": "0x474A6B1fA5dCFB636ad0fdf7373f323c9d41Bd6E",
+  "investor": "0x6Cfd3f5d20De58fA243BEc74d1bf8Fb589453371",
+  "kyc": "SYNTHETIC TESTNET FIXTURES ONLY — not identity verification",
+  "transactions": [
+    {
+      "label": "_SSI_MANAGER_ROLE",
+      "hash": "0xbb77391d1bbae55e3fdd3954e8d01808764c981e7cf884547e64a16d32dd230f",
+      "status": "success"
+    },
+    {
+      "label": "_KYC_ROLE",
+      "hash": "0x28e2661e4623b55b2846faf211dd2ea5d46e7bb081e941d8ec109a272be98cf3",
+      "status": "success"
+    },
+    {
+      "label": "Register demo credential issuer",
+      "hash": "0xd85c90eb3ac0c1d814efc6b3ad0f73833fc90eed7b2705287341193ea007823e",
+      "status": "success"
+    },
+    {
+      "label": "Synthetic KYC 0x474A6B1fA5dCFB636ad0fdf7373f323c9d41Bd6E",
+      "hash": "0x3b0e66fbc0a8619404389dfeaaca5e8fe5c271ae8a319edca4de93a61583a78c",
+      "status": "success"
+    },
+    {
+      "label": "Synthetic KYC 0x6Cfd3f5d20De58fA243BEc74d1bf8Fb589453371",
+      "hash": "0x829883a4b49a5ad85ea80b6f6638984fcc0c27d1f0424975aaf2e70e86fc34e3",
+      "status": "success"
+    },
+    {
+      "label": "Synthetic KYC 0x975B3eE7B0085d1FC3Ef286D5e95B25101D0f364",
+      "hash": "0xda5eaf0d34e81c101a39a5573a1aa8d7cabee64d1f3092f70ef16f489769c587",
+      "status": "success"
+    }
+  ]
+}

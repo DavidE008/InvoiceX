@@ -1,0 +1,6 @@
+{
+  "currency": "0x555344",
+  "nominalValue": "10000",
+  "nominalValueDecimals": 2,
+  "maturityDate": "2026-11-11T00:00:00.000Z"
+}
