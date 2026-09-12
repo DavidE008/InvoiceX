@@ -1,0 +1,18 @@
+{
+  "chainId": 296,
+  "deployer": "0x474A6B1fA5dCFB636ad0fdf7373f323c9d41Bd6E",
+  "deployedAt": "2026-09-12T17:25:23.425Z",
+  "TestUSD": {
+    "address": "0x783b71AFBBfC814081E53bE19003b9400Fdd4EDb",
+    "transactionHash": "0x24ebcdd0eb95db06f3e3151da779a454314a483c49ebbb87e39d825f17608687",
+    "constructorArguments": []
+  },
+  "InvoiceMarketplace": {
+    "address": "0x975B3eE7B0085d1FC3Ef286D5e95B25101D0f364",
+    "transactionHash": "0x01744845c5c4196300712a96a08e287f87df79eee5939e030a09cc542d9c58c9",
+    "constructorArguments": [
+      "0x783b71AFBBfC814081E53bE19003b9400Fdd4EDb",
+      "0x474A6B1fA5dCFB636ad0fdf7373f323c9d41Bd6E"
+    ]
+  }
+}

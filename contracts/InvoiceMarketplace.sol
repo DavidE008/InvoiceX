@@ -19,6 +19,7 @@ contract InvoiceMarketplace is Ownable, ReentrancyGuard {
         uint256 price;
         uint64 dueDate;
         bytes32 commitment;
+        string ensName;
         Status status;
     }
     IERC20 public immutable paymentToken;
@@ -50,16 +51,16 @@ contract InvoiceMarketplace is Ownable, ReentrancyGuard {
         emit AssetApproved(asset, issuer);
     }
 
-    function list(address asset, address debtor, uint256 faceValue, uint256 price, uint64 dueDate, bytes32 commitment)
+    function list(address asset, address debtor, uint256 faceValue, uint256 price, uint64 dueDate, bytes32 commitment, string calldata ensName)
         external nonReentrant returns (uint256 id)
     {
         if (approvedIssuer[asset] != msg.sender) revert Unauthorized();
         if (usedAsset[asset] || debtor == address(0) || price == 0 || faceValue < price ||
-            dueDate <= block.timestamp || commitment == bytes32(0)) revert InvalidTerms();
+            dueDate <= block.timestamp || commitment == bytes32(0) || bytes(ensName).length == 0 || bytes(ensName).length > 255) revert InvalidTerms();
         if (IERC20(asset).totalSupply() != 1) revert InvalidTerms();
         usedAsset[asset] = true;
         id = ++invoiceCount;
-        invoices[id] = Invoice(asset, msg.sender, debtor, faceValue, price, dueDate, commitment, Status.Open);
+        invoices[id] = Invoice(asset, msg.sender, debtor, faceValue, price, dueDate, commitment, ensName, Status.Open);
         _receiveExact(IERC20(asset), msg.sender, 1);
         emit Listed(id, asset, msg.sender, commitment);
     }

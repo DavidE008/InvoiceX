@@ -25,7 +25,7 @@ async function fixture() {
   await (await asset.approve(marketAddress, 1)).wait();
   const due = BigInt((await provider.getBlock('latest'))!.timestamp + 86400);
   const commitment = keccak256(toUtf8Bytes('invoice-one'));
-  const terms = [await asset.getAddress(), debtor.address, 10_000_000n, 9_700_000n, due, commitment];
+  const terms = [await asset.getAddress(), debtor.address, 10_000_000n, 9_700_000n, due, commitment, 'inv-001.acme.eth'];
   await (await usd.mint(investor.address, 30_000_000n)).wait();
   await (await usd.connect(investor).approve(marketAddress, 30_000_000n)).wait();
   return { chain, admin, investor, debtor, secondary, usd, asset, market, marketAddress, terms };
