@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
@@ -14,7 +16,7 @@
     "deploy": "tsx --env-file-if-exists=.env scripts/deploy.ts",
     "ats": "tsx --env-file-if-exists=.env scripts/ats.ts",
     "check:chains": "tsx --env-file-if-exists=.env scripts/check-chains.ts",
-    "test:e2e": "playwright test"
+    "verify:contracts": "tsx scripts/verify.ts"
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -36,5 +38,7 @@
     "ganache": "^7.9.2",
     "ethers": "^6.15.0"
   },
-  "optionalDependencies": { "@hashgraph/asset-tokenization-sdk": "8.0.0" }
+  "optionalDependencies": {
+    "@hashgraph/asset-tokenization-sdk": "8.0.0"
+  }
 }
