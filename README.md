@@ -20,6 +20,14 @@ InvoiceX lets a business tokenize an approved receivable and sell it to an inves
 
 Uniswap is a separate Sepolia treasury operation, not liquidity for the restricted ATS asset and not a bridge to Hedera. This MVP does not claim cross-chain atomic settlement.
 
+### Judge verification map
+
+| Track | What to inspect | Live proof |
+| --- | --- | --- |
+| Hedera | [ATS asset creation](scripts/ats.ts#L77-L115), [KYC grant](scripts/ats.ts#L117-L136), [secondary-market listing and settlement](contracts/InvoiceMarketplace.sol#L48-L105) | [ATS-issued receivable](https://hashscan.io/testnet/contract/0.0.10506750), [finance transaction](https://hashscan.io/testnet/transaction/0xba17c61f9563d19d7b0557d5e17d6c7bd9de053f37d7d19acfb5c5fdf6c4bcbe), [holder redemption](https://hashscan.io/testnet/transaction/0x4e183e7abc705425809384b06d8c183509fcab31f0ebbc3c7e7b6a9dddee8be3) |
+| ENSv2 | [Permissioned Resolver delegation](src/chain/ens.ts#L26-L55), [authorized publication](src/chain/ens.ts#L57-L80), [live commitment verification](src/chain/ens.ts#L82-L100) | [Officer publication](https://sepolia.etherscan.io/tx/0x6d7256f1276d5554131f44ace079306dc97b843344e4fde9f45d4256183b6302), [permission revocation](https://sepolia.etherscan.io/tx/0x3e0d89770cda678046d4caad9ae083f967d6027e5bb027c5f750f6df62ce987e) |
+| Uniswap | [four-tier QuoterV2 selection](src/chain/uniswap.ts#L40-L109), [bounded SwapRouter02 execution](src/chain/uniswap.ts#L111-L174), [treasury UI](src/components/Integrations.tsx#L126-L210) | [Confirmed exact-output swap](https://sepolia.etherscan.io/tx/0x9ad7537b92e6c504178224b572df5560739e5f063b5076fb01608a575b5243a0), [saved evidence](deployments/uniswap-sepolia.json), [feedback](FEEDBACK.md) |
+
 ## MVP Flow
 
 1. A business creates an invoice with its amount, debtor, due date, and financing price.
@@ -91,4 +99,4 @@ For Sepolia, configure a funded wallet and an ENSv2 parent with a Permissioned R
 - A trusted admin verifies ATS provenance and approves assets. One unit per invoice; no fractional financing. Redeemed units stay in escrow and cannot be relisted.
 - The UI loads the latest 100 listings. Browser storage is local, not a shared backend. Contracts are tested but unaudited. Keep the optional ATS CLI and its keys off public servers.
 
-See [track requirements](docs/REQUIREMENTS.md) and [submission checklist](docs/SUBMISSION.md). Feedback submission and the video remain required before claiming completion across all tracks. Eligibility is decided by the organizers.
+See [track requirements](docs/REQUIREMENTS.md), [submission checklist](docs/SUBMISSION.md), [copy-ready Uniswap form responses](docs/UNISWAP_FORM_RESPONSES.md), and the [four-minute recording guide](docs/DEMO_VIDEO.md). Feedback submission and the video remain required before claiming completion across all tracks. Eligibility is decided by the organizers.

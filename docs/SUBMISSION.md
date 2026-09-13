@@ -11,8 +11,8 @@
 - [x] Capture ENSv2 grant → officer publication → commitment check → revoke → rejected publication.
 - [x] Settle the ENSv2-published ATS receivable on Hedera; see `deployments/connected-lifecycle.json`.
 - [x] Execute a Uniswap exact-output swap against a seeded Sepolia test pool and save receipt.
-- [ ] Submit Uniswap feedback form linking to `FEEDBACK.md`.
-- [ ] Publish a demo video of at most five minutes and add its URL to README and ETHGlobal.
+- [ ] Submit the Uniswap feedback form linking to `FEEDBACK.md`; use `docs/UNISWAP_FORM_RESPONSES.md`, add personal details and ratings, review the terms, and save confirmation evidence.
+- [ ] Record and publish a demo video of at most five minutes using `docs/DEMO_VIDEO.md`; add its URL to README and ETHGlobal, then verify it while signed out.
 
 ## Four-minute video outline
 
