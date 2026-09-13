@@ -1,0 +1,55 @@
+{
+  "chainId": 11155111,
+  "owner": "0x90D82685fb6C22A69e61F69C4abb85C547793864",
+  "tokenOut": "0x768f42455a2d082e23ceef7d51e5787c82d67a39",
+  "positionManager": "0x1238536071E1c677A632429e3655c799b22cDA52",
+  "note": "Real Uniswap contracts, synthetic test liquidity. No monetary value or bridge.",
+  "transactions": [
+    {
+      "label": "Mint free test USDC",
+      "hash": "0x11f2b180c16e0f8d3f7d4ee3e37ad5c8d82a9ae347d3cc7a7bd27a2e1a752702",
+      "status": "success"
+    },
+    {
+      "label": "Wrap 0.01 test ETH liquidity",
+      "hash": "0x1bc9408b15ca8362f9bcd9cdcec055df7ef939f55aa9daa0bf156e1755324e75",
+      "status": "success"
+    },
+    {
+      "label": "Initialize synthetic test pool",
+      "hash": "0xf93010fb13561865b52b0d70c66493d43e25220bd1abde8592bb37d7cdaf9b53",
+      "status": "success"
+    },
+    {
+      "label": "Approve test USDC liquidity",
+      "hash": "0x2173a4c2da9bd2b593a6df9dbdf514390bda6a36857e7e8895cdc8958aa4a578",
+      "status": "success"
+    },
+    {
+      "label": "Approve WETH liquidity",
+      "hash": "0x58cee16c1be6ae034d0e957d66d469ebb75d682cbe686ea03e0f2fe4bdd22b38",
+      "status": "success"
+    },
+    {
+      "label": "Mint full-range LP position",
+      "hash": "0x9f28ce0353222568e49617748617bf17ef41cf8d0c0d235a3a1cc1f6e34bb087",
+      "status": "success"
+    }
+  ],
+  "pool": "0x63fd32b52bFAa9FdF89bc8257a092417406c5704",
+  "positionId": "231987",
+  "quote": {
+    "fee": 3000,
+    "amountIn": "50402463672426",
+    "tokenOut": "0x768f42455a2d082e23ceef7d51e5787c82d67a39",
+    "amountOut": "100000",
+    "maxInput": "50654475990789",
+    "expiresAt": 1789264367733,
+    "decimals": 6,
+    "symbol": "USDC",
+    "rpc": "https://ethereum-sepolia-rpc.publicnode.com"
+  },
+  "swapReceipt": "0x9ad7537b92e6c504178224b572df5560739e5f063b5076fb01608a575b5243a0",
+  "received": "100000",
+  "exactOutputVerified": true
+}

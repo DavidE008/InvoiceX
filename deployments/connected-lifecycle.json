@@ -1,0 +1,71 @@
+{
+  "network": "hedera-testnet",
+  "asset": "0x94a777e32bc8dc5d7dcb1f59d1ab08a7b14bacae",
+  "marketplace": "0x975B3eE7B0085d1FC3Ef286D5e95B25101D0f364",
+  "seller": "0x474A6B1fA5dCFB636ad0fdf7373f323c9d41Bd6E",
+  "investor": "0x6Cfd3f5d20De58fA243BEc74d1bf8Fb589453371",
+  "ensPublished": true,
+  "scope": "ENSv2-authorized synthetic receivable with actual ATS settlement",
+  "transactions": [
+    {
+      "label": "Approve actual ATS provenance",
+      "hash": "0x2f1fa9c142b5ca1532385cc7f9db91d1b920281a1fd7164cbf3f1b6743d8106c",
+      "status": "success"
+    },
+    {
+      "label": "Approve one ATS unit",
+      "hash": "0xb76d58aee8fabdb5f62a6e38005cc7f39021f692f3deb4f370db5d355acde44b",
+      "status": "success"
+    },
+    {
+      "label": "List ENSv2-published invoice",
+      "hash": "0x5bc2728f28d28efeacc5caf1051d56cb0223c11462550ceafd2d8babd994b4b1",
+      "status": "success"
+    },
+    {
+      "label": "Investor payment approval",
+      "hash": "0x6405a913ac86b2c1af5226b38d993f3013345a7523854f7fa120943865f6de0b",
+      "status": "success"
+    },
+    {
+      "label": "Revoke test investor KYC",
+      "hash": "0xdaf2c4b1297d3f31e01928c231419b8aee96cd94b0c6c754d061c427dec46d71",
+      "status": "success"
+    },
+    {
+      "label": "Restore synthetic test investor KYC",
+      "hash": "0xfa660f92a6cf01d0869aba94a37aec6e763f6b47ca1a46b44b7587fdf73d0dc7",
+      "status": "success"
+    },
+    {
+      "label": "Finance with atomic ATS delivery",
+      "hash": "0xba17c61f9563d19d7b0557d5e17d6c7bd9de053f37d7d19acfb5c5fdf6c4bcbe",
+      "status": "success"
+    },
+    {
+      "label": "Approve face-value repayment",
+      "hash": "0x213bd0dd2a611dcdbe45dc34bdaacf0f93937f699fc556dfc45b7ae970ea5c4b",
+      "status": "success"
+    },
+    {
+      "label": "Repay invoice",
+      "hash": "0x4753e345dd4e7a319c8fd4d39f381253b94680a4c157ee2d7d0550a824bc426c",
+      "status": "success"
+    },
+    {
+      "label": "Approve ATS redemption",
+      "hash": "0x202a2bfb40ebccd8a60083e49245d1f4d5a2fb66317eee83c79cf44d2479ac1f",
+      "status": "success"
+    },
+    {
+      "label": "Claim repayment as ATS holder",
+      "hash": "0x4e183e7abc705425809384b06d8c183509fcab31f0ebbc3c7e7b6a9dddee8be3",
+      "status": "success"
+    }
+  ],
+  "invoiceId": "2",
+  "balanceBeforeFinance": "10000000000",
+  "nonKycFinanceSimulationRejected": true,
+  "finalStatus": "Settled",
+  "investorPaymentBalance": "10030000000"
+}

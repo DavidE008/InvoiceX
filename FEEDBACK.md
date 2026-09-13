@@ -18,7 +18,9 @@ Sepolia treasury swaps are separate from Hedera invoice financing. We do not put
 
 ## Validation status
 
-Implemented and type-checked; network and deployment-code presence checked. A funded Sepolia wallet, liquid output-token pool and executed swap receipt are still required before claiming live end-to-end success. These are implementation observations, not a completed liquidity benchmark.
+Implemented, type-checked and executed against the official Sepolia contracts. We created a reproducible synthetic MockUSDC/WETH pool with the official NonfungiblePositionManager, then used the same adapter as the UI to receive exactly 0.1 MockUSDC. [Swap receipt](https://sepolia.etherscan.io/tx/0x9ad7537b92e6c504178224b572df5560739e5f063b5076fb01608a575b5243a0), [complete evidence](deployments/uniswap-sepolia.json), [fixture script](scripts/uniswap-demo.ts).
+
+Unit tests cover upward-rounded slippage bounds, invalid tolerance, stale quotes and changed configuration. The seeded ratio is artificial and is not a liquidity benchmark or real exchange rate.
 
 ## Required feedback form
 

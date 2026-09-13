@@ -13,8 +13,8 @@ InvoiceX lets a business tokenize an approved receivable and sell it to an inves
 ## Sponsor integrations
 
 - **Hedera Asset Tokenization Studio:** Actual ATS 8 SDK bond creation/issuance, role and KYC configuration, atomic asset/payment exchange, repayment and holder redemption. [SDK CLI](scripts/ats.ts), [testnet setup](scripts/ats-demo-setup.ts), [marketplace contract](contracts/InvoiceMarketplace.sol), [receipts](deployments/).
-- **ENSv2:** Per-invoice `org.invoicex.invoice` authorization through the Permissioned Resolver; grant/revoke finance-officer access and verify canonical invoice commitments before listing and financing. [Adapter](src/chain/ens.ts), [identity screen](src/components/Identity.tsx). Live Sepolia delegation/publication proof is pending a funded wallet and configured ENSv2 name.
-- **Uniswap:** Exact-output treasury swaps using QuoterV2 and SwapRouter02, four fee tiers, bounded input/approval and deadlines. [Reusable adapter](src/chain/uniswap.ts), [treasury screen](src/components/Integrations.tsx), [developer feedback](FEEDBACK.md). Live Sepolia swap and feedback-form submission remain pending.
+- **ENSv2:** Per-invoice `org.invoicex.invoice` authorization through the Permissioned Resolver; grant/revoke finance-officer access and verify canonical invoice commitments before listing and financing. [Adapter](src/chain/ens.ts), [identity screen](src/components/Identity.tsx), [live permission evidence](deployments/ensv2-permissions.json). Delegated publication, unrelated-record rejection, tampered-terms rejection and revoked-publication rejection all verified on Sepolia.
+- **Uniswap:** Exact-output treasury swaps using QuoterV2 and SwapRouter02, four fee tiers, bounded input/approval and deadlines. [Reusable adapter](src/chain/uniswap.ts), [treasury screen](src/components/Integrations.tsx), [live swap evidence](deployments/uniswap-sepolia.json), [developer feedback](FEEDBACK.md). An exact-output swap is confirmed on Sepolia; the feedback form still requires submission.
 
 Uniswap is a separate Sepolia treasury operation, not liquidity for the restricted ATS asset and not a bridge to Hedera. This MVP does not claim cross-chain atomic settlement.
 
@@ -51,7 +51,16 @@ npm run compile  # Solidity artifacts and complete standard JSON input
 | TestUSD            | `0x783b71AFBBfC814081E53bE19003b9400Fdd4EDb` | [0.0.10506250](https://hashscan.io/testnet/contract/0.0.10506250) |
 | ATS receivable     | `0x48b2db5a2eaf3d99ab65d265f410854668ace50b` | [0.0.10506298](https://hashscan.io/testnet/contract/0.0.10506298) |
 
-The custom contracts have exact creation/runtime source matches on [Sourcify](https://repo.sourcify.dev/296/0x975B3eE7B0085d1FC3Ef286D5e95B25101D0f364). The ATS asset was created through the official factory, not our compliance test double.
+The custom contracts have exact creation/runtime source matches on [Sourcify](https://repo.sourcify.dev/296/0x975B3eE7B0085d1FC3Ef286D5e95B25101D0f364). The ATS assets were created through the official factory, not our compliance test double. The connected receivable is [0.0.10506750](https://hashscan.io/testnet/contract/0.0.10506750), asset `0x94a777e32bc8dc5d7dcb1f59d1ab08a7b14bacae`.
+
+### Live ENSv2 and Uniswap evidence
+
+- Business name: `invoicex-2026.eth`; invoice: `inv-001.invoicex-2026.eth` on **Sepolia**, not mainnet.
+- [Finance officer publication](https://sepolia.etherscan.io/tx/0x6d7256f1276d5554131f44ace079306dc97b843344e4fde9f45d4256183b6302) and [revocation](https://sepolia.etherscan.io/tx/0x3e0d89770cda678046d4caad9ae083f967d6027e5bb027c5f750f6df62ce987e). The existing record remains readable after revocation; the officer cannot modify it.
+- The published receivable completed [atomic financing](https://hashscan.io/testnet/transaction/0xba17c61f9563d19d7b0557d5e17d6c7bd9de053f37d7d19acfb5c5fdf6c4bcbe), repayment and [holder redemption](https://hashscan.io/testnet/transaction/0x4e183e7abc705425809384b06d8c183509fcab31f0ebbc3c7e7b6a9dddee8be3). [Connected lifecycle evidence](deployments/connected-lifecycle.json) records the completed flow and compliance rejection check.
+- [Confirmed exact-output swap](https://sepolia.etherscan.io/tx/0x9ad7537b92e6c504178224b572df5560739e5f063b5076fb01608a575b5243a0): received exactly 0.1 freely mintable MockUSDC through actual Uniswap v3 contracts.
+- The [test pool](https://sepolia.etherscan.io/address/0x63fd32b52bFAa9FdF89bc8257a092417406c5704) was seeded with 20 mock tokens and 0.01 test WETH. This artificial fixture ratio is not a market exchange rate. LP position #231987 belongs to the configured Sepolia owner.
+- Reproduce with `scripts/ens-setup.ts`, `scripts/ens-demo.ts`, and `scripts/uniswap-demo.ts`, using `npx tsx --env-file-if-exists=.env`. Scripts are testnet-only and save public receipts. Do not create a second asset or LP position when resuming an existing run.
 
 ## Testnet setup
 
@@ -78,4 +87,4 @@ For Sepolia, configure a funded wallet and an ENSv2 parent with a Permissioned R
 - A trusted admin verifies ATS provenance and approves assets. One unit per invoice; no fractional financing. Redeemed units stay in escrow and cannot be relisted.
 - The UI loads the latest 100 listings. Browser storage is local, not a shared backend. Contracts are tested but unaudited. Keep the optional ATS CLI and its keys off public servers.
 
-See [track requirements](docs/REQUIREMENTS.md) and [submission checklist](docs/SUBMISSION.md). Live ENS/Uniswap evidence, feedback submission and the video remain required before claiming completion across all tracks. Eligibility is decided by the organizers.
+See [track requirements](docs/REQUIREMENTS.md) and [submission checklist](docs/SUBMISSION.md). Feedback submission and the video remain required before claiming completion across all tracks. Eligibility is decided by the organizers.

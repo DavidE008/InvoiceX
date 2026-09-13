@@ -1,0 +1,28 @@
+{
+  "security": {
+    "schema": {},
+    "name": "InvoiceX Connected Receivable 002",
+    "symbol": "IX002",
+    "isin": "US0000000010",
+    "type": "BOND_VARIABLE_RATE",
+    "decimals": 0,
+    "isWhiteList": false,
+    "erc20VotesActivated": false,
+    "isControllable": false,
+    "isMultiPartition": false,
+    "arePartitionsProtected": false,
+    "clearingActive": false,
+    "internalKycActivated": true,
+    "isIssuable": true,
+    "totalSupply": {},
+    "maxSupply": {},
+    "diamondAddress": {
+      "value": "0.0.10506750"
+    },
+    "evmDiamondAddress": {
+      "value": "0x94a777e32bc8dc5d7dcb1f59d1ab08a7b14bacae"
+    },
+    "paused": false
+  },
+  "transactionId": "0x5737cd19ff67792b578c7da3bd9a5192deea1c956443eb8dd6d57af2d9172b14"
+}

@@ -38,8 +38,9 @@ export async function delegateInvoice(
     throw new Error(
       "This name has no resolver on Sepolia. Configure its ENSv2 parent first.",
     );
-  const wallet = suppliedWallet || await walletFor(sepolia);
-  if (await wallet.getChainId() !== sepolia.id) throw new Error('ENS wallet must use Sepolia.');
+  const wallet = suppliedWallet || (await walletFor(sepolia));
+  if ((await wallet.getChainId()) !== sepolia.id)
+    throw new Error("ENS wallet must use Sepolia.");
   const { request } = await client.simulateContract({
     address,
     abi: resolverAbi,
@@ -61,8 +62,9 @@ export async function publishInvoice(
     throw new Error(
       "Configure an ENSv2 parent resolver for this invoice namespace first.",
     );
-  const wallet = suppliedWallet || await walletFor(sepolia);
-  if (await wallet.getChainId() !== sepolia.id) throw new Error('ENS wallet must use Sepolia.');
+  const wallet = suppliedWallet || (await walletFor(sepolia));
+  if ((await wallet.getChainId()) !== sepolia.id)
+    throw new Error("ENS wallet must use Sepolia.");
   const value = JSON.stringify({
     version: 1,
     commitment: invoiceCommitment(item),

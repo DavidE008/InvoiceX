@@ -1,0 +1,27 @@
+{
+  "name": "inv-001.invoicex-2026.eth",
+  "owner": "0x90D82685fb6C22A69e61F69C4abb85C547793864",
+  "officer": "0x6Cfd3f5d20De58fA243BEc74d1bf8Fb589453371",
+  "invoice": {
+    "id": "connected-demo",
+    "business": "InvoiceX Demo Business",
+    "ensName": "inv-001.invoicex-2026.eth",
+    "asset": "0x94a777e32bc8dc5d7dcb1f59d1ab08a7b14bacae",
+    "seller": "0x474a6b1fa5dcfb636ad0fdf7373f323c9d41bd6e",
+    "debtor": "0x474a6b1fa5dcfb636ad0fdf7373f323c9d41bd6e",
+    "faceValue": "1000",
+    "price": "970",
+    "dueDate": "2026-12-01T00:00:00Z",
+    "status": "Open",
+    "activity": [],
+    "commitment": "0x2079f56d895439af22d3fa80d562400d2adbfe7b1073d158abbe20955ea53553"
+  },
+  "fundingHash": "0x1cc669335c450a73919d0c4238ecad0baf81e4d0c83ff70bc3a474ce1e585039",
+  "grantHash": "0x81d44615b43ef46b8241369eb4cd1e5b78b9a71517a50bd117056af29004a257",
+  "publishHash": "0x6d7256f1276d5554131f44ace079306dc97b843344e4fde9f45d4256183b6302",
+  "resolutionVerified": true,
+  "tamperedTermsRejected": true,
+  "otherRecordRejected": true,
+  "revokeHash": "0x3e0d89770cda678046d4caad9ae083f967d6027e5bb027c5f750f6df62ce987e",
+  "revokedPublicationRejected": true
+}

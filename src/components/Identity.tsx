@@ -11,7 +11,7 @@ export function Identity({
   config: Config;
   run: (fn: () => Promise<string>) => Promise<void>;
 }) {
-  const [name, setName] = useState("inv-001.acme.eth"),
+  const [name, setName] = useState("inv-001.invoicex-2026.eth"),
     [delegate, setDelegate] = useState(""),
     [record, setRecord] = useState(""),
     [demoGrant, setDemoGrant] = useState(false);

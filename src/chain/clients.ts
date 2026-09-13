@@ -10,7 +10,11 @@ import {
 } from "viem";
 import { hederaTestnet, sepolia } from "viem/chains";
 export { hederaTestnet, sepolia };
-export type ChainWallet = import('viem').WalletClient<import('viem').Transport, Chain, import('viem').Account>;
+export type ChainWallet = import("viem").WalletClient<
+  import("viem").Transport,
+  Chain,
+  import("viem").Account
+>;
 export interface Config {
   market: string;
   payment: string;
@@ -26,7 +30,9 @@ export const defaultConfig: Config = {
   payment:
     env.VITE_PAYMENT_TOKEN_ADDRESS ||
     "0x783b71AFBBfC814081E53bE19003b9400Fdd4EDb",
-  outputToken: env.VITE_UNISWAP_OUTPUT_TOKEN || "",
+  outputToken:
+    env.VITE_UNISWAP_OUTPUT_TOKEN ||
+    "0x768f42455a2d082e23ceef7d51e5787c82d67a39",
   sepoliaRpc:
     env.VITE_SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com",
   hederaRpc: env.VITE_HEDERA_RPC_URL || "https://testnet.hashio.io/api",

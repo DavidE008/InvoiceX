@@ -111,7 +111,11 @@ export async function quoteTreasury(
 export async function executeTreasury(
   quote: TreasuryQuote,
   config: Config,
-  suppliedWallet?: import('viem').WalletClient<import('viem').Transport, import('viem').Chain, import('viem').Account>,
+  suppliedWallet?: import("viem").WalletClient<
+    import("viem").Transport,
+    import("viem").Chain,
+    import("viem").Account
+  >,
 ) {
   if (Date.now() >= quote.expiresAt)
     throw new Error("Quote expired. Request a fresh quote.");
@@ -121,8 +125,9 @@ export async function executeTreasury(
   )
     throw new Error("Configuration changed. Request a fresh quote.");
   const client = publicClient(sepolia, config),
-    wallet = suppliedWallet || await walletFor(sepolia);
-  if (await wallet.getChainId() !== sepolia.id) throw new Error('Treasury wallet must use Sepolia.');
+    wallet = suppliedWallet || (await walletFor(sepolia));
+  if ((await wallet.getChainId()) !== sepolia.id)
+    throw new Error("Treasury wallet must use Sepolia.");
   const balance = await client.readContract({
     address: UNISWAP.weth,
     abi: erc20Abi,

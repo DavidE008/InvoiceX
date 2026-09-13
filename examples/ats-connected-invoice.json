@@ -1,0 +1,9 @@
+{
+  "name": "InvoiceX Connected Receivable 002",
+  "symbol": "IX002",
+  "isin": "US0000000010",
+  "faceValue": "1000",
+  "maturityDate": "2026-12-01T00:00:00Z",
+  "configId": "0x0000000000000000000000000000000000000000000000000000000000000002",
+  "configVersion": 1
+}

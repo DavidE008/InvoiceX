@@ -1,0 +1,55 @@
+{
+  "network": "sepolia",
+  "owner": "0x90D82685fb6C22A69e61F69C4abb85C547793864",
+  "label": "invoicex-2026",
+  "revision": "97a57293f3b4279d94b571e678edb53ce62638f4",
+  "transactions": [
+    {
+      "label": "Deploy ENSv2 resolver",
+      "hash": "0x734934761d7d864514f812f0ba3b412f5c2e35b7ac459bbcba4b790f6731ca61",
+      "status": "success"
+    },
+    {
+      "label": "Deploy ENSv2 registry",
+      "hash": "0xae8a5a8c327c6f6ebb8a41189446c2975d8ded51bdee7e804f8ca79b4b2d2a42",
+      "status": "success"
+    },
+    {
+      "label": "Commit project name",
+      "hash": "0x51f6571f9647028297cca45eae0e14c90490511a2e158af6f5ab959189ffbac1",
+      "status": "success"
+    },
+    {
+      "label": "Mint free ENS test USDC",
+      "hash": "0xd41a03f41ac43b455ac3a5f6e14f18402862c16f2e7274a181224c90a84d189b",
+      "status": "success"
+    },
+    {
+      "label": "Approve test registration payment",
+      "hash": "0x22a68d4c0762f548b985c816d56d628cd8afe8071f46124c936b8dc9a3f9fad8",
+      "status": "success"
+    },
+    {
+      "label": "Register project ENSv2 name",
+      "hash": "0x9e1a9bfb796eb88f9a43de14267b0456873725302bd858059fd5fef2169849aa",
+      "status": "success"
+    },
+    {
+      "label": "Register invoice subname",
+      "hash": "0x01ab6aa5d25fbd611092d90af06e73a84ae3b7e667a288a4325893ba67526925",
+      "status": "success"
+    },
+    {
+      "label": "Set business wallet record",
+      "hash": "0xb698036a0286c2736d35fd30c3d38e051bea65905165943676d9a5bcc2fd270b",
+      "status": "success"
+    }
+  ],
+  "resolver": "0x2B51762AB8988C03E135CB530915Fe8C0F173df5",
+  "registry": "0x95b884eEDDf19CF939572e1F4F9F3B0bFF4130fb",
+  "commitment": "0xe8ee5a941b20a4f8b6783c7ba88a5234295e688186b4eca6aec045b7115d95ae",
+  "committedAt": 1789235496,
+  "registered": true,
+  "name": "invoicex-2026.eth",
+  "invoiceName": "inv-001.invoicex-2026.eth"
+}

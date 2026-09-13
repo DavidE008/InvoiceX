@@ -6,9 +6,10 @@
 - [x] Contract tests: atomic payment, compliance rollback, current-holder claims, expiry and replay protection.
 - [x] Browser demo lifecycle, creation, validation and search; desktop/mobile inspection.
 - [x] Final live Hedera lifecycle evidence reports `Settled` in `deployments/hedera-lifecycle.json`, with non-KYC finance rejection checked by simulation.
-- [ ] Fund/configure Sepolia wallet and ENSv2 namespace.
-- [ ] Capture ENSv2 grant → officer publication → commitment check → revoke → rejected publication.
-- [ ] Execute a Uniswap exact-output swap against a liquid Sepolia pool and save receipt.
+- [x] Fund/configure Sepolia wallet and ENSv2 namespace `invoicex-2026.eth`.
+- [x] Capture ENSv2 grant → officer publication → commitment check → revoke → rejected publication.
+- [x] Settle the ENSv2-published ATS receivable on Hedera; see `deployments/connected-lifecycle.json`.
+- [x] Execute a Uniswap exact-output swap against a seeded Sepolia test pool and save receipt.
 - [ ] Submit Uniswap feedback form linking to `FEEDBACK.md`.
 - [ ] Publish a demo video of at most five minutes and add its URL to README and ETHGlobal.
 

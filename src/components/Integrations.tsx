@@ -18,7 +18,7 @@ export function Integrations({
   run: (fn: () => Promise<string>) => Promise<void>;
 }) {
   const [draft, setDraft] = useState(config),
-    [amount, setAmount] = useState("100"),
+    [amount, setAmount] = useState("0.1"),
     [bps, setBps] = useState("50");
   const [quote, setQuote] = useState<TreasuryQuote | null>(null),
     [receipt, setReceipt] = useState("");

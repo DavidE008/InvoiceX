@@ -8,12 +8,29 @@ import {
 } from "ethers";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { compile } from "./compile.js";
-import { invoiceCommitment } from "../src/domain/invoice.js";
+import { invoiceCommitment, moneyToUnits } from "../src/domain/invoice.js";
+import { verifyInvoice } from "../src/chain/ens.js";
+import { defaultConfig } from "../src/chain/clients.js";
 
-// Hedera-only integration test against an actual ATS asset. Does NOT prove ENS publication.
+// --connected verifies ENS publication for the second actual ATS asset.
+const connected = process.argv.includes("--connected");
 const setup = JSON.parse(
-  readFileSync("deployments/ats-setup-0.0.10506298.json", "utf8"),
+  readFileSync(
+    `deployments/ats-setup-${connected ? "0.0.10506750" : "0.0.10506298"}.json`,
+    "utf8",
+  ),
 );
+const published = connected
+  ? JSON.parse(readFileSync("deployments/ensv2-permissions.json", "utf8"))
+      .invoice
+  : null;
+const faceAmount = moneyToUnits(published?.faceValue || "10000");
+const priceAmount = moneyToUnits(published?.price || "9700");
+const ensConfig = {
+  ...defaultConfig,
+  sepoliaRpc: process.env.SEPOLIA_RPC_URL!,
+};
+if (connected) await verifyInvoice(published, ensConfig);
 const provider = new JsonRpcProvider(
   process.env.HEDERA_RPC_URL || "https://testnet.hashio.io/api",
 );
@@ -54,7 +71,9 @@ const asset = new Contract(
   ],
   seller,
 );
-const file = "deployments/hedera-lifecycle.json";
+const file = connected
+  ? "deployments/connected-lifecycle.json"
+  : "deployments/hedera-lifecycle.json";
 const evidence = existsSync(file)
   ? JSON.parse(readFileSync(file, "utf8"))
   : {
@@ -63,9 +82,10 @@ const evidence = existsSync(file)
       marketplace: await market.getAddress(),
       seller: seller.address,
       investor: investor.address,
-      ensPublished: false,
-      scope:
-        "Hedera-only synthetic receivable lifecycle, not an ENS integration proof",
+      ensPublished: connected,
+      scope: connected
+        ? "ENSv2-authorized synthetic receivable with actual ATS settlement"
+        : "Hedera-only synthetic receivable lifecycle, not an ENS integration proof",
       transactions: [],
     };
 for (const tx of evidence.transactions) {
@@ -110,7 +130,7 @@ if (!evidence.invoiceId) {
     market.approveAsset(setup.assetAddress, seller.address),
   );
   await record("Approve one ATS unit", asset.approve(marketAddress, 1));
-  const item = {
+  const item = published || {
     asset: setup.assetAddress,
     seller: seller.address,
     debtor: seller.address,
@@ -120,12 +140,12 @@ if (!evidence.invoiceId) {
     dueDate: "2026-11-11T00:00:00Z",
   };
   await record(
-    "List Hedera-only fixture",
+    connected ? "List ENSv2-published invoice" : "List Hedera-only fixture",
     market.list(
       item.asset,
       item.debtor,
-      10_000_000_000n,
-      9_700_000_000n,
+      faceAmount,
+      priceAmount,
       Math.floor(Date.parse(item.dueDate) / 1000),
       invoiceCommitment(item),
       item.ensName,
@@ -136,18 +156,20 @@ if (!evidence.invoiceId) {
 }
 const invoiceId = BigInt(evidence.invoiceId);
 if (Number((await market.invoices(invoiceId)).status) === 1) {
-  if ((await usd.balanceOf(investor.address)) < 9_700_000_000n)
+  if (connected) await verifyInvoice(published, ensConfig);
+  if ((await usd.balanceOf(investor.address)) < priceAmount)
     await record(
       "Mint test USD to investor",
-      usd.mint(investor.address, 9_700_000_000n),
+      usd.mint(investor.address, priceAmount),
     );
   await record(
     "Investor payment approval",
-    (usd.connect(investor) as any).approve(marketAddress, 9_700_000_000n),
+    (usd.connect(investor) as any).approve(marketAddress, priceAmount),
   );
   if (Number(await asset.getKycStatusFor(investor.address)) === 1)
     await record("Revoke test investor KYC", asset.revokeKyc(investor.address));
   const before = await usd.balanceOf(investor.address);
+  evidence.balanceBeforeFinance = String(before);
   await assert.rejects(() =>
     (market.connect(investor) as any).finance.staticCall(invoiceId),
   );
@@ -171,14 +193,11 @@ if (Number((await market.invoices(invoiceId)).status) === 1) {
   assert.equal(await asset.balanceOf(investor.address), 1n);
 }
 if (Number((await market.invoices(invoiceId)).status) === 2) {
-  if ((await usd.balanceOf(seller.address)) < 10_000_000_000n)
-    await record(
-      "Mint debtor test USD",
-      usd.mint(seller.address, 10_000_000_000n),
-    );
+  if ((await usd.balanceOf(seller.address)) < faceAmount)
+    await record("Mint debtor test USD", usd.mint(seller.address, faceAmount));
   await record(
     "Approve face-value repayment",
-    usd.approve(marketAddress, 10_000_000_000n),
+    usd.approve(marketAddress, faceAmount),
   );
   await record("Repay invoice", market.repay(invoiceId));
 }
@@ -194,7 +213,11 @@ if (Number((await market.invoices(invoiceId)).status) === 3) {
 }
 assert.equal(Number((await market.invoices(invoiceId)).status), 4);
 assert.equal(await asset.balanceOf(marketAddress), 1n);
-assert.equal(await usd.balanceOf(investor.address), 10_000_000_000n);
+if (evidence.balanceBeforeFinance)
+  assert.equal(
+    await usd.balanceOf(investor.address),
+    BigInt(evidence.balanceBeforeFinance) - priceAmount + faceAmount,
+  );
 evidence.finalStatus = "Settled";
 evidence.investorPaymentBalance = String(await usd.balanceOf(investor.address));
 writeFileSync(file, JSON.stringify(evidence, null, 2));
