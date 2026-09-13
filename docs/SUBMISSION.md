@@ -1,6 +1,7 @@
 # Submission checklist
 
 - [x] Public repository with incremental commits.
+- [x] Public live demo at https://davide008.github.io/InvoiceX/ (wallet-free demo plus testnet workspace).
 - [x] Actual ATS SDK receivable creation, permissions, synthetic KYC and issuance receipts.
 - [x] Custom contracts deployed and exact-match source-verified.
 - [x] Contract tests: atomic payment, compliance rollback, current-holder claims, expiry and replay protection.

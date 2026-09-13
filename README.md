@@ -2,6 +2,8 @@
 
 InvoiceX is an onchain invoice-financing marketplace that helps businesses unlock working capital from unpaid invoices.
 
+**[Open the live demo](https://davide008.github.io/InvoiceX/)** · ETHOnline 2026 · Test funds only
+
 ## Problem
 
 Businesses often wait 30, 60, or 90 days for invoices to be paid, creating cash-flow gaps that can delay payroll, inventory purchases, and growth.
@@ -36,6 +38,8 @@ npm run dev
 ```
 
 Open http://127.0.0.1:5173. The default **Demo workspace** works without wallets: create, search, finance, repay, claim or cancel sample invoices. Demo state stays in your browser. **Testnet workspace** uses wallet confirmations and actual testnet contracts; failures are never replaced with simulated success.
+
+The public site is published from `gh-pages`. Source development remains on `main`. The optional [verification/publishing workflow](docs/verify-and-publish.yml) is a template, not an active CI workflow: installing it requires a GitHub login with workflow permission. The current published build passed all 10 local automated tests and a production build before publishing.
 
 ```sh
 npm test          # contract and domain tests
